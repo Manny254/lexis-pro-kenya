@@ -92,7 +92,7 @@ const DocumentsModule: React.FC = () => {
                 <div style={{ padding: '14px 16px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
                     <span className={`badge ${extBadge(d.fileExt)}`}>{d.fileExt.toUpperCase()}</span>
-                    <span style={{ fontSize: '0.65rem', color: 'hsl(var(--foreground-muted))', background: 'rgba(200,149,42,0.1)', padding: '2px 7px', borderRadius: 999, color: 'hsl(var(--primary))' }}>v{d.version}</span>
+                    <span style={{ fontSize: '0.65rem', background: 'rgba(200,149,42,0.1)', padding: '2px 7px', borderRadius: 999, color: 'hsl(var(--primary))' }}>v{d.version}</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                     <FileText size={16} style={{ color: 'hsl(var(--foreground-muted))', flexShrink: 0 }} />
