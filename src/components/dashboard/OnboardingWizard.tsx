@@ -23,11 +23,6 @@ const STEPS = [
     desc: 'The Court Calendar gives you at-a-glance countdown timers for every scheduled hearing. Red alerts fire automatically for hearings within 3 days.',
   },
   {
-    icon: '💰',
-    title: 'Billing, M-Pesa & Time Tracking',
-    desc: 'Log billable hours with the live timer, generate KES invoices, and record M-Pesa payment references directly against client files. All amounts in Kenyan Shillings.',
-  },
-  {
     icon: '🚀',
     title: "You're Ready!",
     desc: 'Your demo data is loaded. Explore all 8 modules. Use the Global Search to jump across clients, cases, and tasks instantly.',

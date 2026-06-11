@@ -11,12 +11,11 @@ import ClientsModule from '@/components/dashboard/modules/ClientsModule';
 import CasesModule from '@/components/dashboard/modules/CasesModule';
 import CalendarModule from '@/components/dashboard/modules/CalendarModule';
 import DocumentsModule from '@/components/dashboard/modules/DocumentsModule';
-import BillingModule from '@/components/dashboard/modules/BillingModule';
 import TasksModule from '@/components/dashboard/modules/TasksModule';
 import CommunicationsModule from '@/components/dashboard/modules/CommunicationsModule';
 import ToastSystem from '@/components/ToastSystem';
 
-type Module = 'overview' | 'clients' | 'cases' | 'calendar' | 'documents' | 'billing' | 'tasks' | 'messages';
+type Module = 'overview' | 'clients' | 'cases' | 'calendar' | 'documents' | 'tasks' | 'messages';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
@@ -36,7 +35,6 @@ const Dashboard: React.FC = () => {
       case 'cases': return <CasesModule />;
       case 'calendar': return <CalendarModule />;
       case 'documents': return <DocumentsModule />;
-      case 'billing': return <BillingModule />;
       case 'tasks': return <TasksModule />;
       case 'messages': return <CommunicationsModule />;
       default: return <OverviewModule />;
