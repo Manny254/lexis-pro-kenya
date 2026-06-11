@@ -1,9 +1,9 @@
 import React from 'react';
-import { BarChart2, Users, Briefcase, Calendar, FolderOpen, DollarSign, CheckSquare, MessageSquare, Settings } from 'lucide-react';
+import { BarChart2, Users, Briefcase, Calendar, FolderOpen, CheckSquare, MessageSquare } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useApp } from '@/contexts/AppContext';
 
-type Module = 'overview' | 'clients' | 'cases' | 'calendar' | 'documents' | 'billing' | 'tasks' | 'messages';
+type Module = 'overview' | 'clients' | 'cases' | 'calendar' | 'documents' | 'tasks' | 'messages';
 
 interface SidebarProps {
   active: Module;
@@ -16,7 +16,6 @@ const NAV_ITEMS: { id: Module; icon: React.ReactNode; label: string; roles: Arra
   { id: 'cases',      icon: <Briefcase size={16} />,      label: 'Cases',       roles: ['admin', 'attorney'] },
   { id: 'calendar',   icon: <Calendar size={16} />,       label: 'Calendar',    roles: ['admin', 'attorney', 'staff'] },
   { id: 'documents',  icon: <FolderOpen size={16} />,     label: 'Documents',   roles: ['admin', 'attorney'] },
-  { id: 'billing',    icon: <DollarSign size={16} />,     label: 'Billing',     roles: ['admin', 'attorney'] },
   { id: 'tasks',      icon: <CheckSquare size={16} />,    label: 'Tasks',       roles: ['admin', 'attorney', 'staff'] },
   { id: 'messages',   icon: <MessageSquare size={16} />,  label: 'Communications', roles: ['admin', 'attorney', 'staff'] },
 ];

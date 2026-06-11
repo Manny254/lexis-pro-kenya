@@ -1,8 +1,5 @@
 import React from 'react';
 import { useApp } from '@/contexts/AppContext';
-import { SEED_CLIENTS } from '@/data/seed';
-
-const formatKES = (n: number) => `KES ${n.toLocaleString('en-KE')}`;
 
 const getDaysUntil = (date: string) => {
   const d = new Date(date);
@@ -13,12 +10,12 @@ const getDaysUntil = (date: string) => {
 };
 
 const OverviewModule: React.FC = () => {
-  const { clients, invoices, tasks, hearings, cases } = useApp();
+  const { clients, tasks, hearings, cases } = useApp();
 
   const today = new Date();
-  const revenueCollected = invoices.filter(i => i.status === 'Paid').reduce((s, i) => s + i.hours * i.rateKES, 0);
-  const pendingRevenue = invoices.filter(i => i.status === 'Pending' || i.status === 'Partial').reduce((s, i) => s + i.hours * i.rateKES, 0);
   const activeClients = clients.filter(c => c.status === 'Active').length;
+  const openCases = cases.filter(c => c.stage !== 'Closed').length;
+  const pendingTasks = tasks.filter(t => t.status !== 'Done').length;
   const overdueTasks = tasks.filter(t => t.status !== 'Done' && new Date(t.deadline) < today).length;
 
   const upcomingHearings = hearings
@@ -32,9 +29,9 @@ const OverviewModule: React.FC = () => {
   const maxCount = Math.max(...caseTypeData.map(e => e[1]), 1);
 
   const kpiCards = [
-    { label: 'Revenue Collected', value: formatKES(revenueCollected), icon: '💰', color: '#4ade80', sub: 'Paid invoices' },
-    { label: 'Pending Invoices', value: formatKES(pendingRevenue), icon: '⏳', color: 'hsl(var(--primary))', sub: 'Awaiting payment' },
     { label: 'Active Clients', value: String(activeClients), icon: '👥', color: '#93c5fd', sub: 'Currently active' },
+    { label: 'Open Cases', value: String(openCases), icon: '📂', color: 'hsl(var(--primary))', sub: 'In progress' },
+    { label: 'Pending Tasks', value: String(pendingTasks), icon: '📋', color: '#4ade80', sub: 'To complete' },
     { label: 'Overdue Tasks', value: String(overdueTasks), icon: '⚠️', color: overdueTasks > 0 ? '#f87171' : '#4ade80', sub: overdueTasks > 0 ? 'Requires attention' : 'All on track' },
   ];
 
