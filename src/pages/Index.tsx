@@ -7,15 +7,17 @@ import TopBar from '@/components/dashboard/TopBar';
 import DashboardSidebar from '@/components/dashboard/DashboardSidebar';
 import GlobalSearch from '@/components/dashboard/GlobalSearch';
 import OverviewModule from '@/components/dashboard/modules/OverviewModule';
+import LeadsModule from '@/components/dashboard/modules/LeadsModule';
 import ClientsModule from '@/components/dashboard/modules/ClientsModule';
 import CasesModule from '@/components/dashboard/modules/CasesModule';
 import CalendarModule from '@/components/dashboard/modules/CalendarModule';
 import DocumentsModule from '@/components/dashboard/modules/DocumentsModule';
+import AIModule from '@/components/dashboard/modules/AIModule';
 import TasksModule from '@/components/dashboard/modules/TasksModule';
 import CommunicationsModule from '@/components/dashboard/modules/CommunicationsModule';
 import ToastSystem from '@/components/ToastSystem';
 
-type Module = 'overview' | 'clients' | 'cases' | 'calendar' | 'documents' | 'tasks' | 'messages';
+type Module = 'overview' | 'leads' | 'clients' | 'cases' | 'calendar' | 'documents' | 'ai' | 'tasks' | 'messages';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
@@ -31,10 +33,12 @@ const Dashboard: React.FC = () => {
   const renderModule = () => {
     switch (activeModule) {
       case 'overview': return <OverviewModule />;
+      case 'leads': return <LeadsModule />;
       case 'clients': return <ClientsModule />;
       case 'cases': return <CasesModule />;
       case 'calendar': return <CalendarModule />;
       case 'documents': return <DocumentsModule />;
+      case 'ai': return <AIModule />;
       case 'tasks': return <TasksModule />;
       case 'messages': return <CommunicationsModule />;
       default: return <OverviewModule />;

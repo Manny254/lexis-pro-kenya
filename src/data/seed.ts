@@ -1,4 +1,4 @@
-import type { Client, Case, Hearing, Document, Invoice, TimeEntry, Task, Message } from '@/types';
+import type { Client, Case, Hearing, Document, Task, Message, Lead } from '@/types';
 
 export const DEMO_USERS = [
   { id: 'u1', email: 'admin@lexiskenya.co.ke',    password: 'admin123', name: 'Amina Waweru',   role: 'admin'    as const, lskNumber: 'LSK/ADV/2019/4821' },
@@ -110,27 +110,6 @@ export const SEED_DOCUMENTS: Document[] = [
   },
 ];
 
-export const SEED_INVOICES: Invoice[] = [
-  {
-    id: 'inv1', clientId: 'c1', description: 'Legal representation — ELC hearing + pleadings drafting',
-    hours: 12, rateKES: 8500, invoiceNo: 'INV/2026/001', status: 'Paid', date: daysAgo(20), mpesaRef: 'QG7X4M2P9K',
-  },
-  {
-    id: 'inv2', clientId: 'c2', description: 'Pre-trial preparation + court appearances (2 sessions)',
-    hours: 8, rateKES: 10000, invoiceNo: 'INV/2026/002', status: 'Pending', date: daysAgo(10),
-  },
-  {
-    id: 'inv3', clientId: 'c4', description: 'Labour court representation — 3 hearings + witness prep',
-    hours: 18, rateKES: 7500, invoiceNo: 'INV/2026/003', status: 'Partial', date: daysAgo(15),
-  },
-];
-
-export const SEED_TIME_ENTRIES: TimeEntry[] = [
-  { id: 't1', clientId: 'c1', caseId: 'cs1', description: 'Research on adverse possession case law (2019–2024)', minutes: 180, date: daysAgo(5), user: 'David Otieno' },
-  { id: 't2', clientId: 'c2', caseId: 'cs2', description: 'Drafting reply to defence — commercial dispute', minutes: 120, date: daysAgo(3), user: 'Amina Waweru' },
-  { id: 't3', clientId: 'c4', caseId: 'cs3', description: 'Client prep session for judgment day', minutes: 60, date: daysAgo(1), user: 'David Otieno' },
-];
-
 export const SEED_TASKS: Task[] = [
   {
     id: 'tk1', title: 'File witness statements for ELC/E/021/2026', assignedTo: 'David Otieno',
@@ -163,4 +142,27 @@ export const SEED_MESSAGES: Message[] = [
     id: 'm3', clientId: 'c4', type: 'WhatsApp', content: 'Confirmed judgment date with client via WhatsApp. Client requests representation at delivery. Advised on likely outcomes.',
     date: daysAgo(1), author: 'Grace Muthoni', followUp: daysFromNow(12),
   },
+];
+
+export const SEED_LEADS: Lead[] = [
+  { id: 'l1', fullName: 'Amina Wanjiku Otieno', email: 'amina@gmail.com',
+    phone: '+254 712 345 678', matterSummary: 'Land dispute in Mombasa — title deed issue',
+    status: 'NEW', source: 'BOOKING_FORM', county: 'Mombasa', practiceArea: 'Land Dispute',
+    date: '2 Jun 2025' },
+  { id: 'l2', fullName: 'Brian Kipchoge Mutai', email: 'brian@gmail.com',
+    phone: '+254 723 456 789', matterSummary: 'Conveyancing — buying plot in Ruiru',
+    status: 'CONTACTED', source: 'REFERRAL', county: 'Kiambu', practiceArea: 'Conveyancing',
+    date: '28 May 2025' },
+  { id: 'l3', fullName: 'Cynthia Achieng Odhiambo', email: 'cynthia@gmail.com',
+    phone: '+254 734 567 890', matterSummary: 'Father died intestate — 3 heirs',
+    status: 'QUALIFIED', source: 'BOOKING_FORM', county: 'Kisumu', practiceArea: 'Succession / Probate',
+    date: '24 May 2025' },
+  { id: 'l4', fullName: 'David Mwangi Kariuki', email: 'david@gmail.com',
+    phone: '+254 745 678 901', matterSummary: 'Arrested — needs criminal defense representation',
+    status: 'NEW', source: 'WALK_IN', county: 'Nairobi', practiceArea: 'Criminal Defense',
+    date: '20 May 2025' },
+  { id: 'l5', fullName: 'Esther Nduta Kamau', email: 'esther@gmail.com',
+    phone: '+254 756 789 012', matterSummary: 'Divorce petition and custody dispute',
+    status: 'CONVERTED', source: 'REFERRAL', county: 'Nakuru', practiceArea: 'Family Law',
+    date: '10 May 2025' },
 ];

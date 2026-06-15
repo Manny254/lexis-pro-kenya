@@ -63,7 +63,22 @@ export const COMM_TYPES = ['Call', 'Email', 'WhatsApp', 'Meeting', 'Note'] as co
 export type CommType = typeof COMM_TYPES[number];
 
 export type TaskStatus = 'Pending' | 'In Progress' | 'Done';
-export type InvoiceStatus = 'Paid' | 'Pending' | 'Partial';
+
+export type LeadStatus = 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'CONVERTED' | 'DEAD';
+export type LeadSource = 'BOOKING_FORM' | 'REFERRAL' | 'WALK_IN' | 'OTHER';
+
+export interface Lead {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  matterSummary: string;
+  status: LeadStatus;
+  source: LeadSource;
+  county: string;
+  practiceArea: string;
+  date: string;
+}
 
 export interface Client {
   id: string;
@@ -117,28 +132,6 @@ export interface Document {
   uploaded: string;
   uploadedBy: string;
   version: number;
-}
-
-export interface Invoice {
-  id: string;
-  clientId: string;
-  description: string;
-  hours: number;
-  rateKES: number;
-  invoiceNo: string;
-  status: InvoiceStatus;
-  date: string;
-  mpesaRef?: string;
-}
-
-export interface TimeEntry {
-  id: string;
-  clientId: string;
-  caseId?: string;
-  description: string;
-  minutes: number;
-  date: string;
-  user: string;
 }
 
 export interface Task {
