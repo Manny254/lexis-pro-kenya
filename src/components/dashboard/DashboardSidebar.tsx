@@ -1,9 +1,9 @@
 import React from 'react';
-import { BarChart2, Users, Briefcase, Calendar, FolderOpen, CheckSquare, MessageSquare } from 'lucide-react';
+import { BarChart2, Users, Briefcase, Calendar, FolderOpen, CheckSquare, MessageSquare, UserPlus, Sparkles } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useApp } from '@/contexts/AppContext';
 
-type Module = 'overview' | 'clients' | 'cases' | 'calendar' | 'documents' | 'tasks' | 'messages';
+type Module = 'overview' | 'leads' | 'clients' | 'cases' | 'calendar' | 'documents' | 'ai' | 'tasks' | 'messages';
 
 interface SidebarProps {
   active: Module;
@@ -12,10 +12,12 @@ interface SidebarProps {
 
 const NAV_ITEMS: { id: Module; icon: React.ReactNode; label: string; roles: Array<'admin' | 'attorney' | 'staff'> }[] = [
   { id: 'overview',   icon: <BarChart2 size={16} />,     label: 'Overview',    roles: ['admin', 'attorney', 'staff'] },
+  { id: 'leads',      icon: <UserPlus size={16} />,      label: 'Leads',       roles: ['admin', 'attorney'] },
   { id: 'clients',    icon: <Users size={16} />,          label: 'Clients',     roles: ['admin', 'attorney', 'staff'] },
   { id: 'cases',      icon: <Briefcase size={16} />,      label: 'Cases',       roles: ['admin', 'attorney'] },
   { id: 'calendar',   icon: <Calendar size={16} />,       label: 'Calendar',    roles: ['admin', 'attorney', 'staff'] },
   { id: 'documents',  icon: <FolderOpen size={16} />,     label: 'Documents',   roles: ['admin', 'attorney'] },
+  { id: 'ai',         icon: <Sparkles size={16} />,       label: 'AI Drafts',   roles: ['admin', 'attorney', 'staff'] },
   { id: 'tasks',      icon: <CheckSquare size={16} />,    label: 'Tasks',       roles: ['admin', 'attorney', 'staff'] },
   { id: 'messages',   icon: <MessageSquare size={16} />,  label: 'Communications', roles: ['admin', 'attorney', 'staff'] },
 ];
